@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "priority": 2,
+    "action": { "type": "allow" },
+    "condition": {
+      "regexFilter": "jp\\.mercari\\.com/search.*status=sold_out",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "sort", "value": "created_time" },
+              { "key": "order", "value": "desc" },
+              { "key": "item_types", "value": "mercari" },
+              { "key": "status", "value": "sold_out" },
+              { "key": "price_min", "value": "3000" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "jp.mercari.com/search",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]

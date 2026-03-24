@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Mercari 検索フィルター",
+  "version": "1.71",
+  "description": "メルカリの検索を自動で「新しい順・個人出品・売切表示・3000円以上」に設定",
+  "permissions": ["declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://jp.mercari.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
