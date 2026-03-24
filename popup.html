@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, sans-serif;
+      width: 240px;
+      background: #fff;
+    }
+    h1 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: #FF0211;
+      padding: 10px 14px;
+    }
+    .list {
+      padding: 8px 0;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .item:last-child { border-bottom: none; }
+    .label {
+      font-size: 13px;
+      color: #333;
+    }
+    .sub {
+      font-size: 11px;
+      color: #999;
+      margin-top: 2px;
+    }
+    /* トグルスイッチ */
+    .switch {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .switch input { display: none; }
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #ccc;
+      border-radius: 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    input:checked + .slider { background: #FF0211; }
+    input:checked + .slider::before { transform: translateX(18px); }
+  </style>
+</head>
+<body>
+  <h1>Mercari フィルター設定</h1>
+  <div class="list">
+    <label class="item">
+      <div>
+        <div class="label">新しい順</div>
+        <div class="sub">出品日時の降順でソート</div>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="sort" checked>
+        <span class="slider"></span>
+      </div>
+    </label>
+    <label class="item">
+      <div>
+        <div class="label">個人出品のみ</div>
+        <div class="sub">ショップ出品を除外</div>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="item_types" checked>
+        <span class="slider"></span>
+      </div>
+    </label>
+    <label class="item">
+      <div>
+        <div class="label">売切を表示</div>
+        <div class="sub">売り切れ商品も含める</div>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="status" checked>
+        <span class="slider"></span>
+      </div>
+    </label>
+    <label class="item">
+      <div>
+        <div class="label">3,000円以上</div>
+        <div class="sub">最低価格フィルター</div>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="price_min" checked>
+        <span class="slider"></span>
+      </div>
+    </label>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
