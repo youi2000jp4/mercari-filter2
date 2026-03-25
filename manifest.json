@@ -4,9 +4,19 @@
   "version": "2.1.4",
   "description": "メルカリの検索を自動で「新しい順・個人出品・売切表示・3000円以上」に設定",
   "permissions": ["declarativeNetRequest", "storage"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Mercari フィルター設定"
+    "default_title": "Mercari フィルター設定",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "declarative_net_request": {
     "rule_resources": [
