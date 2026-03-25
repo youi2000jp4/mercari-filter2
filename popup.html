@@ -65,10 +65,49 @@
     }
     input:checked + .slider { background: #FF0211; }
     input:checked + .slider::before { transform: translateX(18px); }
+    .master {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #fafafa;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .master .label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+      gap: 4px;
+    }
+    .price-row input[type="number"] {
+      width: 72px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 2px 5px;
+      font-size: 11px;
+      color: #333;
+    }
+    .price-row span {
+      font-size: 11px;
+      color: #999;
+    }
+    .price-row.hidden { display: none; }
   </style>
 </head>
 <body>
   <h1>Mercari フィルター設定</h1>
+  <label class="master">
+    <span class="label">すべて有効</span>
+    <div class="switch">
+      <input type="checkbox" id="master" checked>
+      <span class="slider"></span>
+    </div>
+  </label>
   <div class="list">
     <label class="item">
       <div>
@@ -100,13 +139,39 @@
         <span class="slider"></span>
       </div>
     </label>
+    <div class="item">
+      <div>
+        <div class="label">最低価格フィルター</div>
+        <div class="price-row" id="price-input-area">
+          <input type="number" id="price_min_value" min="0" step="100" value="3000">
+          <span>円以上</span>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="price_min" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="item">
+      <div>
+        <div class="label">最高価格フィルター</div>
+        <div class="price-row" id="price-max-input-area">
+          <input type="number" id="price_max_value" min="0" step="100" value="10000">
+          <span>円以下</span>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="price_max">
+        <span class="slider"></span>
+      </label>
+    </div>
     <label class="item">
       <div>
-        <div class="label">3,000円以上</div>
-        <div class="sub">最低価格フィルター</div>
+        <div class="label">フレーズ検索</div>
+        <div class="sub">検索語を " " で囲む</div>
       </div>
       <div class="switch">
-        <input type="checkbox" id="price_min" checked>
+        <input type="checkbox" id="keyword_quote" checked>
         <span class="slider"></span>
       </div>
     </label>
